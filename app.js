@@ -4,7 +4,7 @@ const initialProducts = [
     id: 1,
     name: "Brake Pads (Front/Rear)",
     category: "brakes",
-    price: 250,
+    price: 200,
     stock: 15,
     image: "https://www.breakerlink.com/blog/wp-content/uploads/2016/01/brake-pads.jpg",
     description: "High stopping power, low dust, long-lasting ceramic brake pads."
@@ -22,7 +22,7 @@ const initialProducts = [
     id: 3,
     name: "RS8 SCOOTER ULTRA 10W-40 FULLY SYNTHETIC ENGINE OIL",
     category: "oil",
-    price: 380,
+    price: 350,
     stock: 21,
     image: "https://rs8.com.ph/wp-content/uploads/2023/06/RS8-Scooter-Ultra-10W-40-Fully-Synthetic-800-ML-1-L.webp",
     description: "Premium performance engine oil designed for smooth clutch and engine protection."
@@ -40,7 +40,7 @@ const initialProducts = [
     id: 5,
     name: "Shell Advance AX7 W/GEAR OIL 800ML",
     category: "oil",
-    price: 470,
+    price: 450,
     stock: 10,
     image: "https://down-ph.img.susercontent.com/file/ph-11134207-7r992-lxdhiclmpxxgfb",
     description: "Premium performance engine oil designed for smooth clutch and engine protection."
@@ -58,7 +58,7 @@ const initialProducts = [
     id: 7,
     name: "BEAST Tubeless Tire 130/70-13",
     category: "tire",
-    price: 1500,
+    price: 2300,
     stock: 1,
     image: "https://tse1.mm.bing.net/th/id/OIP.4eMOq2DoIOY6tnjOJGtdDgHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Superior grip road tire for scooter daily commuting and cornering."
@@ -67,7 +67,7 @@ const initialProducts = [
     id: 8,
     name: "BEAST Tubeless Tire 140/70-14",
     category: "tire",
-    price: 1500,
+    price: 2800,
     stock: 1,
     image: "https://tse1.mm.bing.net/th/id/OIP.4eMOq2DoIOY6tnjOJGtdDgHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Superior grip road tire for scooter daily commuting and cornering."
@@ -76,7 +76,7 @@ const initialProducts = [
     id: 9,
     name: "BEAST Tubeless Tire 110/80-14",
     category: "tire",
-    price: 1500,
+    price: 2600,
     stock: 1,
     image: "https://tse1.mm.bing.net/th/id/OIP.4eMOq2DoIOY6tnjOJGtdDgHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Superior grip road tire for scooter daily commuting and cornering."
@@ -85,7 +85,7 @@ const initialProducts = [
     id: 10,
     name: "BEAST Tubeless Tire 80/80-14",
     category: "tire",
-    price: 1500,
+    price: 1300,
     stock: 1,
     image: "https://tse1.mm.bing.net/th/id/OIP.4eMOq2DoIOY6tnjOJGtdDgHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Superior grip road tire for scooter daily commuting and cornering."
@@ -94,22 +94,13 @@ const initialProducts = [
     id: 11,
     name: "BEAST Tubeless Tire 90/80-17",
     category: "tire",
-    price: 1500,
+    price: 1600,
     stock: 1,
     image: "https://tse1.mm.bing.net/th/id/OIP.4eMOq2DoIOY6tnjOJGtdDgHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Superior grip road tire for scooter daily commuting and cornering."
   },
   {
     id: 12,
-    name: "BEAST Tubeless Tire 80/80-14",
-    category: "tire",
-    price: 1300,
-    stock: 2,
-    image: "https://tse1.mm.bing.net/th/id/OIP.4eMOq2DoIOY6tnjOJGtdDgHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-    description: "Superior grip road tire for scooter daily commuting and cornering."
-  },
-  {
-    id: 13,
     name: "SUN RACING PULLEY SET WITH DRIVE FACE FOR HONDA CLICK 125",
     category: "cvt",
     price: 2115,
@@ -118,7 +109,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
   {
-    id: 14,
+    id: 13,
     name: "SUN RACING PULLEY SET WITH DRIVE FACE FOR M3/MIO SOUL i 125",
     category: "cvt",
     price: 2115,
@@ -126,7 +117,7 @@ const initialProducts = [
     image: "https://down-ph.img.susercontent.com/file/ph-11134207-7r98y-luvtxezjak3vc1",
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },{
-    id: 15,
+    id: 14,
     name: "SUN RACING PULLEY SET WITH DRIVE FACE FOR HONDA/PCX160",
     category: "cvt",
     price: 3000,
@@ -135,7 +126,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
   {
-    id: 16,
+    id: 15,
     name: "SUN RACING PULLEY SET WITH DRIVE FACE FOR NMAX 155",
     category: "cvt",
     price: 3330,
@@ -144,7 +135,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
  {
-    id: 17,
+    id: 16,
     name: "RS8 Gear Oil",
     category: "oil",
     price: 150,
@@ -153,7 +144,7 @@ const initialProducts = [
     description: "Premium performance gear oil designed for smooth clutch and engine protection."
   },
   {
-    id: 18,
+    id: 17,
     name: "Yamalube Gear Oil",
     category: "oil",
     price: 150,
@@ -162,7 +153,7 @@ const initialProducts = [
     description: "Premium performance gear oil designed for smooth clutch and engine protection."
   },
   {
-    id: 19,
+    id: 18,
     name: "2PH-E4450-00 element air cleaner filter",
     category: "cvt",
     price: 450,
@@ -171,7 +162,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
   {
-    id: 20,
+    id: 19,
     name: "B6H-E4451-00 element air cleaner filter NMAX V2 / AEROX V2",
     category: "cvt",
     price: 450,
@@ -180,7 +171,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
   {
-    id: 21,
+    id: 20,
     name: "HONDA BEAT V1 V2 V3 - 100% Original HONDA Air Filter - [17210-K16-900]",
     category: "cvt",
     price: 530,
@@ -189,7 +180,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
   {
-    id: 22,
+    id: 21,
     name: "B5D-E4450-00 element air cleaner filter GRAVIS/GEAR",
     category: "cvt",
     price: 450,
@@ -207,7 +198,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
   {
-    id: 21,
+    id: 23,
     name: "Beat FI V. Belt (23100-K44-V01)",
     category: "cvt",
     price: 1237,
@@ -216,7 +207,7 @@ const initialProducts = [
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
    {
-    id: 21,
+    id: 24,
     name: "V Belts Beat Fi V3 GenioFi Beat Street [23100-K0J-N01]",
     category: "cvt",
     price: 530,
