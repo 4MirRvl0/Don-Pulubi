@@ -225,55 +225,32 @@ let translations = {};
 let currentCategory = 'all';
 let searchQuery = '';
 
-// Window Switcher Logic (Displays each section as an individual window screen)
+// Window Switcher Logic (Toggles Welcome screen and Main Store container)
 function switchWindow(windowId) {
-  document.querySelectorAll('.page-window').forEach(win => {
-    win.classList.remove('active-window');
-  });
+  const welcomeEl = document.getElementById('welcome');
+  const mainStoreEl = document.getElementById('main-store-container');
 
-  const target = document.getElementById(windowId);
-  if (target) {
-    target.classList.add('active-window');
+  if (windowId === 'welcome') {
+    if (welcomeEl) welcomeEl.classList.add('active-window');
+    if (mainStoreEl) mainStoreEl.style.display = 'none';
+  } else {
+    if (welcomeEl) welcomeEl.classList.remove('active-window');
+    if (mainStoreEl) mainStoreEl.style.display = 'block';
+
+    document.querySelectorAll('.page-window').forEach(win => {
+      win.classList.remove('active-window');
+    });
+
+    const target = document.getElementById(windowId);
+    if (target) {
+      target.classList.add('active-window');
+    }
   }
 
   window.scrollTo(0, 0);
 }
 
-// Localization Handler
-async function loadTranslations(lang) {
-  try {
-    const res = await fetch(`i18n/${lang}.json`);
-    translations[lang] = await res.json();
-    applyTranslations();
-  } catch (err) {
-    console.error("Failed loading translations", err);
-  }
-}
-
-function setLanguage(lang) {
-  currentLang = lang;
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('btn-tl').classList.toggle('active', lang === 'tl');
-  if (!translations[lang]) {
-    loadTranslations(lang);
-  } else {
-    applyTranslations();
-  }
-}
-
-function applyTranslations() {
-  const dict = translations[currentLang] || {};
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (dict[key]) el.textContent = dict[key];
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (dict[key]) el.placeholder = dict[key];
-  });
-}
-
-// Render Catalog with Stock Badge at the Bottom
+// Render Catalog with Stock Badge and Image Error Fallback
 function renderProducts() {
   const grid = document.getElementById('productGrid');
   grid.innerHTML = '';
@@ -295,7 +272,10 @@ function renderProducts() {
     const card = document.createElement('div');
     card.className = `product-card ${isOutOfStock ? 'out-of-stock' : ''}`;
     card.innerHTML = `
-      <img src="${p.image || 'https://via.placeholder.com/300'}" class="product-img" alt="${p.name}">
+      <img src="${p.image || 'https://via.placeholder.com/300'}" 
+           class="product-img" 
+           alt="${p.name}" 
+           onerror="this.src='https://via.placeholder.com/300?text=Don+Pulubi+Moto+Parts'">
       <div class="product-details">
         <h3 class="product-title">${p.name}</h3>
         <p class="product-desc">${p.description}</p>
