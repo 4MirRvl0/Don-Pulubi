@@ -1013,7 +1013,7 @@ body {
 }
 /* Sleek, Blended Logo-Only Brand Pills */
 .brand-pill.logo-only {
-  background-color: rgba(20, 20, 20, 0.6); /* Semi-transparent dark backing */
+  background-color: #ffffff; /* White background for logo-only pills */
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 1.8rem;
   border-radius: 12px;
@@ -1027,7 +1027,7 @@ body {
 
 .brand-pill.logo-only:hover {
   border-color: var(--primary-yellow);
-  background-color: rgba(30, 30, 30, 0.8);
+  background-color: #ffffff; /* Brightens the background on hover */
   transform: translateY(-3px);
 }
 
