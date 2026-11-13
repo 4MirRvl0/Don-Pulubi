@@ -1011,3 +1011,39 @@ body {
   object-fit: contain;
   display: block;
 }
+/* Sleek, Blended Logo-Only Brand Pills */
+.brand-pill.logo-only {
+  background-color: rgba(20, 20, 20, 0.6); /* Semi-transparent dark backing */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.8rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px); /* Blurs the garage background slightly behind the logo */
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.brand-pill.logo-only:hover {
+  border-color: var(--primary-yellow);
+  background-color: rgba(30, 30, 30, 0.8);
+  transform: translateY(-3px);
+}
+
+/* Larger, Crisp Brand Logos with Blend Effect */
+.brand-logo-img {
+  height: 55px; /* Increased size so they are not too small */
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: luminosity; /* Helps integrate monochromatic tones */
+  opacity: 0.85; /* Softens harsh contrast against the background */
+  transition: opacity 0.3s ease;
+}
+
+.brand-pill.logo-only:hover .brand-logo-img {
+  opacity: 1; /* Fully brightens on hover */
+  mix-blend-mode: normal;
+}
