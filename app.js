@@ -225,16 +225,17 @@ let translations = {};
 let currentCategory = 'all';
 let searchQuery = '';
 
-// Window Navigation (Welcome Screen vs Main Store)
-function enterStore() {
-  document.getElementById('welcome').style.display = 'none';
-  document.getElementById('main-store').style.display = 'block';
-  window.scrollTo(0, 0);
-}
+// Window Switcher Logic (Displays each section as an individual window screen)
+function switchWindow(windowId) {
+  document.querySelectorAll('.page-window').forEach(win => {
+    win.classList.remove('active-window');
+  });
 
-function showWelcome() {
-  document.getElementById('main-store').style.display = 'none';
-  document.getElementById('welcome').style.display = 'flex';
+  const target = document.getElementById(windowId);
+  if (target) {
+    target.classList.add('active-window');
+  }
+
   window.scrollTo(0, 0);
 }
 
@@ -429,7 +430,6 @@ function generateReceipt() {
     return;
   }
 
-  // Deduct purchased quantities from product stock
   cart.forEach(cartItem => {
     const product = products.find(p => p.id === cartItem.id);
     if (product) {
@@ -437,7 +437,6 @@ function generateReceipt() {
     }
   });
 
-  // Save updated stock levels and refresh catalog cards
   localStorage.setItem('dp_products', JSON.stringify(products));
   renderProducts();
 
@@ -464,7 +463,6 @@ function generateReceipt() {
 
   document.getElementById('receiptModal').classList.add('active');
 
-  // Clear cart after checkout
   cart = [];
   updateCartUI();
 }
