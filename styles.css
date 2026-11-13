@@ -987,7 +987,7 @@ body {
 
 /* Brand Logo Badges Styling */
 .brand-pill.logo-only {
-  background-color: rgba(26, 26, 26, 0.95);
+  background-color: #ffffff; /* White background for logo-only pills */
   border: 1px solid var(--border-color);
   padding: 0.8rem 1.6rem;
   border-radius: 12px;
