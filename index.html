@@ -10,158 +10,191 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#welcome" class="brand-logo">
-        <span class="brand-text">DON PULUBI</span>
-        <span class="brand-sub">MOTO PARTS</span>
-      </a>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#welcome" data-i18n="navHome">Home</a>
-        <a href="#catalog" data-i18n="navCatalog">Catalog</a>
-        <a href="#inventory-admin" data-i18n="navAdmin">Manage Inventory</a>
-        <a href="#location" data-i18n="navLocation">Location & Contact</a>
-      </div>
-
-      <div class="nav-actions">
-        <div class="lang-switch">
-          <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
-          <button id="btn-tl" class="lang-btn" onclick="setLanguage('tl')">TL</button>
-        </div>
-        <button class="cart-trigger" onclick="toggleCart()">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-badge" id="cartCount">0</span>
-        </button>
-        <button class="mobile-toggle" onclick="toggleMobileMenu()">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <button class="close-drawer" onclick="toggleMobileMenu()">&times;</button>
-    <a href="#welcome" onclick="toggleMobileMenu()" data-i18n="navHome">Home</a>
-    <a href="#catalog" onclick="toggleMobileMenu()" data-i18n="navCatalog">Catalog</a>
-    <a href="#inventory-admin" onclick="toggleMobileMenu()" data-i18n="navAdmin">Manage Inventory</a>
-    <a href="#location" onclick="toggleMobileMenu()" data-i18n="navLocation">Location & Contact</a>
-  </div>
-
-  <!-- Hero / Welcome Section -->
-  <section id="welcome" class="hero-section">
-    <div class="hero-content">
-      <div class="hero-badge" data-i18n="heroBadge">MOTO PARTS & ACCESSORIES</div>
+  <!-- SEPARATE FULL-SCREEN WELCOME WINDOW -->
+  <section id="welcome" class="welcome-window">
+    <div class="welcome-container">
+      <div class="hero-badge" data-i18n="heroBadge">PREMIUM MOTO PARTS & ACCESSORIES</div>
       <h1 class="hero-title">DON PULUBI</h1>
-      <p class="hero-subtitle" data-i18n="heroSubtitle">Your #1 Shop for High-Performance Upgrades, Accessories, and Authentic Parts.</p>
-      <div class="hero-buttons">
-        <a href="#catalog" class="btn btn-primary" data-i18n="btnShopNow">Shop Products</a>
-        <a href="#location" class="btn btn-secondary" data-i18n="btnVisitUs">Visit Our Shop</a>
+      <p class="welcome-tagline" data-i18n="heroSubtitle">
+        Your #1 Shop for High-Performance Upgrades, Accessories, and Authentic Parts.
+      </p>
+
+      <!-- Informative Shop Highlights -->
+      <div class="shop-highlights">
+        <div class="highlight-box">
+          <i class="fa-solid fa-wrench"></i>
+          <h3>Authentic Parts</h3>
+          <p>Genuine brake pads, racing CVT pulleys, tires, and synthetic engine oils built for daily rides and track performance.</p>
+        </div>
+        <div class="highlight-box">
+          <i class="fa-solid fa-motorcycle"></i>
+          <h3>All-Around Service</h3>
+          <p>Trusted by local riders in Gubat, Sorsogon for reliable parts, honest pricing, and quick counter checkout.</p>
+        </div>
+        <div class="highlight-box">
+          <i class="fa-solid fa-clock"></i>
+          <h3>Store Hours & Location</h3>
+          <p>Open Mon – Sat (8:00 AM – 6:00 PM) at Gubat, Sorsogon. Call or text 09954275748 for part inquiries.</p>
+        </div>
       </div>
-      <div class="hero-contact-bar">
+
+      <!-- Enter Store Action -->
+      <div class="hero-buttons">
+        <button onclick="enterStore()" class="btn btn-primary btn-large" data-i18n="enterShop">
+          <i class="fa-solid fa-door-open"></i> Enter Shop
+        </button>
+        <a href="https://maps.app.goo.gl/4eXnP33EZDDND3858" target="_blank" class="btn btn-secondary">
+          <i class="fa-solid fa-location-dot"></i> Find Us on Maps
+        </a>
+      </div>
+      
+      <div class="hero-contact-bar" style="margin-top: 2rem;">
         <span><i class="fa-solid fa-phone"></i> 09954275748</span>
         <span><i class="fa-solid fa-location-dot"></i> Gubat, Sorsogon, Philippines</span>
       </div>
     </div>
   </section>
 
-  <!-- Product Catalog Section -->
-  <section id="catalog" class="section-container">
-    <div class="section-header">
-      <h2 data-i18n="catalogTitle">Product Catalog</h2>
-      <div class="header-line"></div>
-    </div>
+  <!-- MAIN STORE PAGE (Hidden until "Enter Shop" is clicked) -->
+  <div id="main-store" style="display: none;">
 
-        <!-- Search Bar & Category Filters -->
-    <div class="catalog-controls">
-      <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search moto parts..." data-i18n-placeholder="searchPlaceholder">
-      </div>
-      <div class="category-bar">
-        <button class="cat-btn active" onclick="filterCategory('all')" data-i18n="catAll">All Products</button>
-        <button class="cat-btn" onclick="filterCategory('brakes')" data-i18n="catBrakes">Brake Pads</button>
-        <button class="cat-btn" onclick="filterCategory('oil')" data-i18n="catOil">Engine Oil & Gear Oil</button>
-        <button class="cat-btn" onclick="filterCategory('tire')" data-i18n="catTire">Tires</button>
-        <button class="cat-btn" onclick="filterCategory('cvt')" data-i18n="catCvt">CVT Parts</button>
-      </div>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="product-grid" id="productGrid">
-      <!-- Dynamic Products Inserted Here -->
-    </div>
-  </section>
-
-  <!-- Inventory Admin Section -->
-  <section id="inventory-admin" class="section-container admin-section">
-    <div class="section-header">
-      <h2 data-i18n="adminTitle">Manage Inventory & Add Products</h2>
-      <div class="header-line"></div>
-    </div>
-
-    <div class="admin-card">
-      <form id="addProductForm" onsubmit="handleProductSubmit(event)">
-        <div class="form-grid">
-          <div class="form-group">
-            <label data-i18n="labelProdName">Product Name</label>
-            <input type="text" id="prodName" required placeholder="e.g. Brembo Caliper 4-Piston">
-          </div>
-          <div class="form-group">
-            <label data-i18n="labelCategory">Category</label>
-            <select id="prodCategory" required>
-              <option value="brakes">Brake Pads</option>
-              <option value="oil">Engine Oil & Gear Oil</option>
-              <option value="tire">Tires</option>
-              <option value="cvt">CVT Parts</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label data-i18n="labelPrice">Price (PHP ₱)</label>
-            <input type="number" id="prodPrice" step="0.01" required placeholder="2500.00">
-          </div>
-          <div class="form-group">
-            <label data-i18n="labelStock">Stock Quantity</label>
-            <input type="number" id="prodStock" required placeholder="15">
-          </div>
-          <div class="form-group full-width">
-            <label data-i18n="labelImage">Image URL</label>
-            <input type="url" id="prodImage" placeholder="https://example.com/item.jpg">
-          </div>
-          <div class="form-group full-width">
-            <label data-i18n="labelDesc">Product Description</label>
-            <textarea id="prodDesc" rows="3" placeholder="Enter specifications and details..."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary" data-i18n="btnAddProduct">Add Product to Inventory</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Location & Contact Section -->
-  <section id="location" class="section-container">
-    <div class="section-header">
-      <h2 data-i18n="locationTitle">Location & Contact</h2>
-      <div class="header-line"></div>
-    </div>
-
-    <div class="location-grid">
-      <div class="location-info">
-        <h3><i class="fa-solid fa-store"></i> Don Pulubi Moto Parts</h3>
-        <p><i class="fa-solid fa-location-dot"></i> Gubat, Sorsogon, Philippines</p>
-        <p><i class="fa-solid fa-phone"></i> <strong>Contact:</strong> 09954275748</p>
-        <p><i class="fa-solid fa-clock"></i> <strong>Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
-        <a href="https://maps.app.goo.gl/4eXnP33EZDDND3858" target="_blank" class="btn btn-secondary map-btn">
-          <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" onclick="showWelcome()" class="brand-logo">
+          <span class="brand-text">DON PULUBI</span>
+          <span class="brand-sub">MOTO PARTS</span>
         </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#" onclick="showWelcome()" data-i18n="navHome">Welcome</a>
+          <a href="#catalog" data-i18n="navCatalog">Catalog</a>
+          <a href="#inventory-admin" data-i18n="navAdmin">Manage Inventory</a>
+          <a href="#location" data-i18n="navLocation">Location & Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <div class="lang-switch">
+            <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+            <button id="btn-tl" class="lang-btn" onclick="setLanguage('tl')">TL</button>
+          </div>
+          <button class="cart-trigger" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cartCount">0</span>
+          </button>
+          <button class="mobile-toggle" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
       </div>
-      <div class="map-embed">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881.0!2d124.12!3d12.92!2m2!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU1JzE0LjQiTiAxMjTCsDA3JzEyLjAiRQ!5e0!3m2!1sen!2sph!4v1600000000000!5m2!1sen!2sph" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <button class="close-drawer" onclick="toggleMobileMenu()">&times;</button>
+      <a href="#" onclick="showWelcome(); toggleMobileMenu();" data-i18n="navHome">Welcome</a>
+      <a href="#catalog" onclick="toggleMobileMenu()" data-i18n="navCatalog">Catalog</a>
+      <a href="#inventory-admin" onclick="toggleMobileMenu()" data-i18n="navAdmin">Manage Inventory</a>
+      <a href="#location" onclick="toggleMobileMenu()" data-i18n="navLocation">Location & Contact</a>
     </div>
-  </section>
+
+    <!-- Product Catalog Section -->
+    <section id="catalog" class="section-container">
+      <div class="section-header">
+        <h2 data-i18n="catalogTitle">Product Catalog</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <!-- Search Bar & Category Filters -->
+      <div class="catalog-controls">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search moto parts..." data-i18n-placeholder="searchPlaceholder">
+        </div>
+        <div class="category-bar">
+          <button class="cat-btn active" onclick="filterCategory('all')" data-i18n="catAll">All Products</button>
+          <button class="cat-btn" onclick="filterCategory('brakes')" data-i18n="catBrakes">Brake Pads</button>
+          <button class="cat-btn" onclick="filterCategory('oil')" data-i18n="catOil">Engine Oil & Gear Oil</button>
+          <button class="cat-btn" onclick="filterCategory('tire')" data-i18n="catTire">Tires</button>
+          <button class="cat-btn" onclick="filterCategory('cvt')" data-i18n="catCvt">CVT Parts</button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="productGrid">
+        <!-- Dynamic Products Inserted Here -->
+      </div>
+    </section>
+
+    <!-- Inventory Admin Section -->
+    <section id="inventory-admin" class="section-container admin-section">
+      <div class="section-header">
+        <h2 data-i18n="adminTitle">Manage Inventory & Add Products</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="admin-card">
+        <form id="addProductForm" onsubmit="handleProductSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label data-i18n="labelProdName">Product Name</label>
+              <input type="text" id="prodName" required placeholder="e.g. Brembo Caliper 4-Piston">
+            </div>
+            <div class="form-group">
+              <label data-i18n="labelCategory">Category</label>
+              <select id="prodCategory" required>
+                <option value="brakes">Brake Pads</option>
+                <option value="oil">Engine Oil & Gear Oil</option>
+                <option value="tire">Tires</option>
+                <option value="cvt">CVT Parts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-i18n="labelPrice">Price (PHP ₱)</label>
+              <input type="number" id="prodPrice" step="0.01" required placeholder="2500.00">
+            </div>
+            <div class="form-group">
+              <label data-i18n="labelStock">Stock Quantity</label>
+              <input type="number" id="prodStock" required placeholder="15">
+            </div>
+            <div class="form-group full-width">
+              <label data-i18n="labelImage">Image URL</label>
+              <input type="url" id="prodImage" placeholder="https://example.com/item.jpg">
+            </div>
+            <div class="form-group full-width">
+              <label data-i18n="labelDesc">Product Description</label>
+              <textarea id="prodDesc" rows="3" placeholder="Enter specifications and details..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="btnAddProduct">Add Product to Inventory</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="location" class="section-container">
+      <div class="section-header">
+        <h2 data-i18n="locationTitle">Location & Contact</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-info">
+          <h3><i class="fa-solid fa-store"></i> Don Pulubi Moto Parts</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Gubat, Sorsogon, Philippines</p>
+          <p><i class="fa-solid fa-phone"></i> <strong>Contact:</strong> 09954275748</p>
+          <p><i class="fa-solid fa-clock"></i> <strong>Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
+          <a href="https://maps.app.goo.gl/4eXnP33EZDDND3858" target="_blank" class="btn btn-secondary map-btn">
+            <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
+          </a>
+        </div>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881.0!2d124.12!3d12.92!2m2!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU1JzE0LjQiTiAxMjTCsDA3JzEyLjAiRQ!5e0!3m2!1sen!2sph!4v1600000000000!5m2!1sen!2sph" width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End of #main-store -->
 
   <!-- Cart Modal / Side Panel -->
   <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>

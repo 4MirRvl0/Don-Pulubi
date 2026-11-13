@@ -27,7 +27,7 @@ const initialProducts = [
     image: "https://rs8.com.ph/wp-content/uploads/2023/06/RS8-Scooter-Ultra-10W-40-Fully-Synthetic-800-ML-1-L.webp",
     description: "Premium performance engine oil designed for smooth clutch and engine protection."
   },
-   {
+  {
     id: 4,
     name: "Shell Advance AX7 ENGINE OIL",
     category: "oil",
@@ -36,7 +36,7 @@ const initialProducts = [
     image: "https://cf.shopee.ph/file/ab9c92eb04c72137ab1786a382559e99",
     description: "Premium performance engine oil designed for smooth clutch and engine protection."
   },
-   {
+  {
     id: 5,
     name: "Shell Advance AX7 W/GEAR OIL 800ML",
     category: "oil",
@@ -116,7 +116,8 @@ const initialProducts = [
     stock: 2,
     image: "https://down-ph.img.susercontent.com/file/ph-11134207-7r98y-luvtxezjak3vc1",
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
-  },{
+  },
+  {
     id: 14,
     name: "SUN RACING PULLEY SET WITH DRIVE FACE FOR HONDA/PCX160",
     category: "cvt",
@@ -134,7 +135,7 @@ const initialProducts = [
     image: "https://lzd-img-global.slatic.net/g/ff/kf/S2488957e9489486c9486e850f29628c70.jpg_720x720q80.jpg",
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
- {
+  {
     id: 16,
     name: "RS8 Gear Oil",
     category: "oil",
@@ -188,7 +189,7 @@ const initialProducts = [
     image: "https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/96250e6386164b7e9b4dc962c82f379e~tplv-aphluv4xwc-crop-webp:1500:1500.webp?dr=15592&t=555f072d&ps=933b5bde&shp=8dbd94bf&shcp=607f11de&idc=my2&from=2378011839",
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
-{
+  {
     id: 22,
     name: "Honda Genuine Air Filter Element 17210-K36-T00",
     category: "cvt",
@@ -206,7 +207,7 @@ const initialProducts = [
     image: "https://th.bing.com/th/id/OIP.m5FyvhFi41X1TMN9_Am72wHaHa?w=218&h=218&c=7&r=0&o=7&pid=1.7&rm=3",
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
   },
-   {
+  {
     id: 24,
     name: "V Belts Beat Fi V3 GenioFi Beat Street [23100-K0J-N01]",
     category: "cvt",
@@ -214,7 +215,7 @@ const initialProducts = [
     stock: 3,
     image: "https://th.bing.com/th/id/OIP.Nm4fJBLeh4avjFUKNfRMXgAAAA?w=169&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
     description: "Boost acceleration and eliminate drag with performance CVT upgrades."
-  },
+  }
 ];
 
 let products = JSON.parse(localStorage.getItem('dp_products')) || initialProducts;
@@ -223,6 +224,20 @@ let currentLang = 'en';
 let translations = {};
 let currentCategory = 'all';
 let searchQuery = '';
+
+// Window Navigation (Welcome Screen vs Main Store)
+function enterStore() {
+  document.getElementById('welcome').style.display = 'none';
+  document.getElementById('main-store').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function showWelcome() {
+  document.getElementById('main-store').style.display = 'none';
+  document.getElementById('welcome').style.display = 'flex';
+  window.scrollTo(0, 0);
+}
+
 // Localization Handler
 async function loadTranslations(lang) {
   try {
@@ -305,6 +320,7 @@ function renderProducts() {
     grid.appendChild(card);
   });
 }
+
 function filterCategory(cat) {
   currentCategory = cat;
   document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
@@ -341,16 +357,17 @@ function handleProductSubmit(e) {
   alert("Product added successfully!");
 }
 
-// Updated addToCart function with stock validation
+// Cart Mechanics with Stock Validation
 function addToCart(id) {
   const item = products.find(p => p.id === id);
-  if (!item) return;
+  if (!item || item.stock <= 0) {
+    alert("Sorry, this product is currently out of stock!");
+    return;
+  }
 
-  // Check if item is already in the cart
   const existing = cart.find(c => c.id === id);
   const currentQtyInCart = existing ? existing.qty : 0;
 
-  // Prevent adding more than available stock limit
   if (currentQtyInCart + 1 > item.stock) {
     alert(`Cannot add more. Only ${item.stock} units available in stock.`);
     return;
@@ -383,7 +400,7 @@ function updateCartUI() {
     div.innerHTML = `
       <div class="cart-item-info">
         <h4>${item.name}</h4>
-        <p>₱${item.price} x ${item.qty}</p>
+        <p>₱${item.price.toLocaleString()} x ${item.qty}</p>
       </div>
       <button class="btn btn-secondary" onclick="removeFromCart(${item.id})">&times;</button>
     `;
@@ -405,12 +422,24 @@ function toggleMobileMenu() {
   document.getElementById('mobileDrawer').classList.toggle('open');
 }
 
-// Receipt Generator
+// Receipt Generator & Inventory Stock Deduction
 function generateReceipt() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
+
+  // Deduct purchased quantities from product stock
+  cart.forEach(cartItem => {
+    const product = products.find(p => p.id === cartItem.id);
+    if (product) {
+      product.stock = Math.max(0, product.stock - cartItem.qty);
+    }
+  });
+
+  // Save updated stock levels and refresh catalog cards
+  localStorage.setItem('dp_products', JSON.stringify(products));
+  renderProducts();
 
   const tbody = document.getElementById('receiptTableBody');
   tbody.innerHTML = '';
@@ -423,8 +452,8 @@ function generateReceipt() {
     tr.innerHTML = `
       <td>${item.name}</td>
       <td>${item.qty}</td>
-      <td>₱${item.price}</td>
-      <td>₱${total}</td>
+      <td>₱${item.price.toLocaleString()}</td>
+      <td>₱${total.toLocaleString()}</td>
     `;
     tbody.appendChild(tr);
   });
@@ -434,6 +463,10 @@ function generateReceipt() {
   document.getElementById('receiptNum').textContent = Math.floor(100000 + Math.random() * 900000);
 
   document.getElementById('receiptModal').classList.add('active');
+
+  // Clear cart after checkout
+  cart = [];
+  updateCartUI();
 }
 
 function closeReceipt() {

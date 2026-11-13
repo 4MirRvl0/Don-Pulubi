@@ -731,3 +731,75 @@ body {
   cursor: not-allowed;
   border: 1px solid #444;
 }
+/* Full-Screen Welcome Window */
+.welcome-window {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(18, 18, 18, 0.90) 0%, rgba(18, 18, 18, 0.94) 100%),
+              url('ph-11134207-820l8-mmxc8shntclkdf.jpeg') center/cover no-repeat fixed;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.welcome-container {
+  max-width: 1000px;
+  width: 100%;
+  z-index: 2;
+}
+
+.welcome-tagline {
+  max-width: 650px;
+  margin: 0.8rem auto 2.5rem;
+  color: var(--text-light);
+  font-size: 1.15rem;
+}
+
+/* Informative 3-Column Shop Highlights */
+.shop-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.highlight-box {
+  background-color: rgba(30, 30, 30, 0.85);
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--primary-yellow);
+  padding: 1.5rem;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.highlight-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-red);
+}
+
+.highlight-box i {
+  font-size: 2rem;
+  color: var(--primary-yellow);
+  margin-bottom: 0.8rem;
+}
+
+.highlight-box h3 {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.highlight-box p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.btn-large {
+  font-size: 1.1rem;
+  padding: 0.9rem 2.4rem;
+}
