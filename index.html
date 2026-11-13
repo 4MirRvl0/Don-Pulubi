@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- 1. WELCOME WINDOW (Default Landing Screen) -->
+   <!-- 1. WELCOME WINDOW (Default Landing Screen) -->
   <section id="welcome" class="welcome-window page-window active-window">
     <div class="welcome-container">
       <div class="hero-badge" data-i18n="heroBadge">MOTO PARTS & ACCESSORIES</div>
@@ -38,23 +38,47 @@
         </div>
       </div>
 
+      <!-- NEW: Explore Brands & Products Showcase -->
+      <div class="explore-showcase-box">
+        <h3 class="explore-heading"><i class="fa-solid fa-star"></i> Explore Our Authorized Brands & Parts</h3>
+        <p class="explore-subtext">We carry top-tier aftermarket performance parts and genuine manufacturer components:</p>
+        
+        <div class="brand-badge-grid">
+          <div class="brand-pill">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>RS8 Performance</span>
+          </div>
+          <div class="brand-pill">
+            <i class="fa-solid fa-gears"></i>
+            <span>Sun Racing</span>
+          </div>
+          <div class="brand-pill">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Yamaha Genuine</span>
+          </div>
+          <div class="brand-pill">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Honda Genuine</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Action Buttons -->
       <div class="hero-buttons">
         <button onclick="switchWindow('catalog-window')" class="btn btn-primary btn-large" data-i18n="enterShop">
-          <i class="fa-solid fa-door-open"></i> Enter Shop
+          <i class="fa-solid fa-door-open"></i> Enter Shop Catalog
         </button>
         <button onclick="switchWindow('location-window')" class="btn btn-secondary btn-large">
           <i class="fa-solid fa-location-dot"></i> Visit Shop Location
         </button>
       </div>
       
-      <div class="hero-contact-bar" style="margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+      <div class="hero-contact-bar">
         <span><i class="fa-solid fa-phone"></i> 09954275748</span> &nbsp;|&nbsp; 
         <span><i class="fa-solid fa-location-dot"></i> Gubat, Sorsogon, Philippines</span>
       </div>
     </div>
   </section>
-
   <!-- MAIN APP WRAPPER (Navbar is shared across store windows) -->
   <div id="main-store-container">
 
@@ -265,75 +289,7 @@
       </div>
     </div>
   </div>
-  <!-- 1. WELCOME WINDOW (Default Landing Screen) -->
-  <section id="welcome" class="welcome-window page-window active-window">
-    <div class="welcome-container">
-      <div class="hero-badge" data-i18n="heroBadge">MOTO PARTS & ACCESSORIES</div>
-      <h1 class="hero-title">DON PULUBI</h1>
-      <p class="welcome-tagline" data-i18n="heroSubtitle">
-        Shop for High-Performance Upgrades, Accessories, and Authentic Parts in Gubat, Sorsogon.
-      </p>
 
-      <!-- Informative Shop Highlights -->
-      <div class="shop-highlights">
-        <div class="highlight-box">
-          <i class="fa-solid fa-wrench"></i>
-          <h3>Authentic Parts</h3>
-          <p>Genuine brake pads, racing CVT pulley sets, tires, and synthetic engine oils built for daily commuting and track performance.</p>
-        </div>
-        <div class="highlight-box">
-          <i class="fa-solid fa-motorcycle"></i>
-          <h3>Expert Garage Service</h3>
-          <p>Trusted by local riders for reliable mechanical installations, honest pricing, and professional motorcycle tune-ups.</p>
-        </div>
-        <div class="highlight-box">
-          <i class="fa-solid fa-clock"></i>
-          <h3>Store Hours & Info</h3>
-          <p>Open Monday – Saturday (8:00 AM – 6:00 PM). Call or text 09954275748 for stock inquiries and reservations.</p>
-        </div>
-      </div>
-
-      <!-- NEW: Explore Brands & Products Showcase -->
-      <div class="explore-showcase-box">
-        <h3 class="explore-heading"><i class="fa-solid fa-star"></i> Explore Our Authorized Brands & Parts</h3>
-        <p class="explore-subtext">We carry top-tier aftermarket performance parts and genuine manufacturer components:</p>
-        
-        <div class="brand-badge-grid">
-          <div class="brand-pill">
-            <i class="fa-solid fa-gauge-high"></i>
-            <span>RS8 Performance</span>
-          </div>
-          <div class="brand-pill">
-            <i class="fa-solid fa-gears"></i>
-            <span>Sun Racing</span>
-          </div>
-          <div class="brand-pill">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>Yamaha Genuine</span>
-          </div>
-          <div class="brand-pill">
-            <i class="fa-solid fa-bolt"></i>
-            <span>Honda Genuine</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="hero-buttons">
-        <button onclick="switchWindow('catalog-window')" class="btn btn-primary btn-large" data-i18n="enterShop">
-          <i class="fa-solid fa-door-open"></i> Enter Shop Catalog
-        </button>
-        <button onclick="switchWindow('location-window')" class="btn btn-secondary btn-large">
-          <i class="fa-solid fa-location-dot"></i> Visit Shop Location
-        </button>
-      </div>
-      
-      <div class="hero-contact-bar">
-        <span><i class="fa-solid fa-phone"></i> 09954275748</span> &nbsp;|&nbsp; 
-        <span><i class="fa-solid fa-location-dot"></i> Gubat, Sorsogon, Philippines</span>
-      </div>
-    </div>
-  </section>
   <script src="app.js"></script>
 </body>
 </html>
